@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  time.timeZone = "America/New_York";
+  time.timeZone = "America/Denver";
   # security.acme.acceptTerms = true;
   nix = {
     package = pkgs.nix;
@@ -14,10 +14,10 @@
     git
   ];
   age.secrets.secret1 = {
-    file = ../../secrets/nextcloudPassword;
+    #file = ../../secrets/nextcloudPassword;
     # path = "/var/lib/secrets/nextcloudpass";
-    mode = "770";
-    owner = "nextcloud";
+    #mode = "770";
+    #owner = "nextcloud";
   };
   security.pam = {
     enableSSHAgentAuth = true;
@@ -49,21 +49,20 @@
   };
   security.acme = {
     acceptTerms = true;
-    defaults.email = "foo@bar.com";
+    defaults.email = "human.bagel@gmail.com";
   };
   users.users = {
     sky = {
       isNormalUser = true;
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJAGm66rJsr8vjRCYDkH4lEPncPq27o6BHzpmRmkzOiM"
-      ];
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICVQk2zAil8R7uNuyer1o0+IP//nP7+vLPaUjTkmbYth"      ];
       extraGroups = ["wheel"];
     };
   };
   services.tailscale.enable = true;
   services.nextcloud = {
     enable = true;
-    hostName = "nextcloud.arouzing.xyz";
+    hostName = "im2.gay";
     package = pkgs.nextcloud27;
     enableBrokenCiphersForSSE = false;
     https = true;
@@ -73,7 +72,7 @@
       post_max_size = lib.mkForce "16G";
     };
     config = {
-      adminpassFile = config.age.secrets.secret1.path;
+      adminpassFile = "${pkgs.writeTest "nextcloud-admin-pass" "CHANGEMEINSECUREASAP"}";
     };
   };
   networking.firewall.allowedTCPPorts = [22 80 443];
@@ -81,9 +80,9 @@
   system.autoUpgrade = {
     dates = "daily";
     enable = true;
-    allowReboot = true;
+    allowReboot = false;
     randomizedDelaySec = "60min";
-    flake = "github:jeremiahSecrist/linode-nextcloud-nixos";
+    flake = "github:PrincessPi3/linode-nextcloud-nixos";
   };
   networking.hostName = "nextcloud";
 }
