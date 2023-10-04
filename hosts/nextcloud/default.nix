@@ -13,12 +13,12 @@
   environment.systemPackages = with pkgs; [
     git
   ];
-  age.secrets.secret1 = {
+#  age.secrets.secret1 = {
     #file = ../../secrets/nextcloudPassword;
     # path = "/var/lib/secrets/nextcloudpass";
     #mode = "770";
     #owner = "nextcloud";
-  };
+#  };
   security.pam = {
     enableSSHAgentAuth = true;
     services.sudo.sshAgentAuth = true;
@@ -72,7 +72,7 @@
       post_max_size = lib.mkForce "16G";
     };
     config = {
-      adminpassFile = "${pkgs.writeTest "nextcloud-admin-pass" "CHANGEMEINSECUREASAP"}";
+      adminpassFile = "${pkgs.writeText "nextcloud-admin-pass" "CHANGEMEINSECUREASAP"}";
     };
   };
   networking.firewall.allowedTCPPorts = [22 80 443];
