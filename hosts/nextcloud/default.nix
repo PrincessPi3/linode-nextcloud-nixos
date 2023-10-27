@@ -62,7 +62,7 @@
   services.tailscale.enable = true;
   services.nextcloud = {
     enable = true;
-    hostName = "im2.gay";
+    hostName = "chrysalis.fun";
     package = pkgs.nextcloud27;
     enableBrokenCiphersForSSE = false;
     https = true;
