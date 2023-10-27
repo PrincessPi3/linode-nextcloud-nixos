@@ -75,6 +75,20 @@
       adminpassFile = "${pkgs.writeText "nextcloud-admin-pass" "CHANGEMEINSECUREASAP"}";
     };
   };
+
+  services.kasmweb = {
+    enable = true;
+    listenPort = 5899;
+  };
+
+services.nginx.virtualHosts."kasm.chrysalis.fun" = {
+    addSSL = true;
+    enableACME = true;
+    locations."/" = {
+        proxyPass = "http://127.0.0.1:5899";
+        proxyWebsockets = true;
+    };
+};
   networking.firewall.allowedTCPPorts = [22 80 443];
   system.stateVersion = "23.05";
   system.autoUpgrade = {
