@@ -100,7 +100,7 @@ services.nginx.virtualHosts."kasm.chrysalis.fun" = {
         proxyWebsockets = true;
     };
 };
-  networking.firewall.allowedTCPPorts = [22 80 443];
+  networking.firewall.allowedTCPPorts = [22 80 443 5899];
   system.stateVersion = "23.05";
   system.autoUpgrade = {
     dates = "daily";
