@@ -81,7 +81,7 @@ nixpkgs.config.allowUnfree = true;
   services.kasmweb = {
     enable = true;
     listenPort = 5899;
-    listenAddress = "127.0.0.1";
+    #listenAddress = "127.0.0.1";
     defaultUserPassword = "CHANGEMEINSECURE";
     defaultAdminPassword = "CHANGEMEINSECURE"; 
   };
