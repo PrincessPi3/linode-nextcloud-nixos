@@ -18,7 +18,7 @@
       nixos-lib = import (nixpkgs + "/nixos/lib") { };
       pkgs = import nixpkgs {
         system = defaultSystem;
-        nixpkgs.config.allowUnfree = true;
+        config.allowUnfree = true;
       };
       # lib = nixpkgs.lib;
       # forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
