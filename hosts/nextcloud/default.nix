@@ -79,6 +79,9 @@
   services.kasmweb = {
     enable = true;
     listenPort = 5899;
+    listenAddress = "127.0.0.1";
+    defaultUserPassword = "CHANGEMEINSECURE";
+    defaultAdminPassword = "CHANGEMEINSECURE"; 
   };
 
 services.nginx.virtualHosts."kasm.chrysalis.fun" = {
