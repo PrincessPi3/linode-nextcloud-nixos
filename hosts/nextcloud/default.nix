@@ -10,6 +10,7 @@
     package = pkgs.nix;
     settings.experimental-features = ["nix-command" "flakes"];
   };
+virtualisation.oci-containers.backend = "docker";
 nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     git
