@@ -4,6 +4,9 @@
   lib,
   ...
 }: {
+  imports = [
+    ./modules/kasmweb
+  ];
   time.timeZone = "America/Denver";
   # security.acme.acceptTerms = true;
   nix = {
@@ -78,7 +81,7 @@ nixpkgs.config.allowUnfree = true;
     };
   };
 
-  services.kasmweb = {
+  services.kasmweb2 = {
     enable = true;
     listenPort = 5899;
     #services.kasmweb.networkSubnet = ""172.1.0.0/16""

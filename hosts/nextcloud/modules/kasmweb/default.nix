@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 let
-  cfg = config.services.kasmweb;
+  cfg = config.services.kasmweb2;
 in
 {
-  options.services.kasmweb = {
+  options.services.kasmweb2 = {
     enable = lib.mkEnableOption (lib.mdDoc "kasmweb");
 
     networkSubnet = lib.mkOption {
@@ -153,6 +153,7 @@ in
             postgresPassword = cfg.postgres.password;
             inherit (cfg)
               datastorePath
+              networkSubnet
               sslCertificate
               sslCertificateKey
               redisPassword
