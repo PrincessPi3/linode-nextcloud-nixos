@@ -81,6 +81,8 @@ nixpkgs.config.allowUnfree = true;
     };
   };
 
+virtualisation.podman.dockerCompat = true;
+
   services.kasmweb2 = {
     enable = true;
     listenPort = 5899;
