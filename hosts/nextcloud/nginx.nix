@@ -14,23 +14,23 @@ in
     };
   };
 
-  security.acme.certs.${domain} = {
-    webroot = "/var/lib/acme/${domain}";
-    extraDomainNames = [
-      subdomain
-    ];
-  };
+  # security.acme.certs.${domain} = {
+    # webroot = "/var/lib/acme/${domain}";
+    # extraDomainNames = [
+      # subdomain
+    # ];
+  # };
 
   services.nginx.virtualHosts.${domain} = {
     forceSSL = true;
     globalRedirect = subdomain;
-    useACMEHost = domain;
-    acmeRoot = config.security.acme.certs.${domain}.webroot;
+    # useACMEHost = domain;
+    # acmeRoot = config.security.acme.certs.${domain}.webroot;
   };
 
   services.nginx.virtualHosts.${subdomain} = {
     forceSSL = true;
-    useACMEHost = domain;
-    acmeRoot = config.security.acme.certs.${domain}.webroot;
+    # useACMEHost = domain;
+    #acmeRoot = config.security.acme.certs.${domain}.webroot;
   };
 }
