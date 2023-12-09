@@ -56,6 +56,12 @@ nixpkgs.config.allowUnfree = true;
   security.acme = {
     acceptTerms = true;
     defaults.email = "human.bagel@gmail.com";
+    certs."*.chrysalis.fun" = {
+    dnsProvider = "namecheap";
+    # Suplying password files like this will make your credentials world-readable
+    # in the Nix store. This is for demonstration purpose only, do not use this in production.
+    credentialsFile = "/home/demo/dns_req";
+  };
   };
   users.users = {
     sky = {
