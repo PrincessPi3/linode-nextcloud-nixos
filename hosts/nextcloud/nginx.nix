@@ -6,7 +6,7 @@ let
 in
 {
   services.wordpress = {
-    webserver = "ngix";
+    webserver = "nginx";
     sites.${subdomain} = {
       settings = {
         WPLANG = "en_US";
