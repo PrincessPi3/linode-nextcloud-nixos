@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./modules/kasmweb
+    ./nginx.nix
   ];
   time.timeZone = "America/Denver";
   # security.acme.acceptTerms = true;
